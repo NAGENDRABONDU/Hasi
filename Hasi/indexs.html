@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>For You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:#000;
+color:white;
+overflow:hidden;
+}
+
+section{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+#intro{
+background:linear-gradient(120deg,#1d2671,#c33764);
+}
+
+#memory{
+background:#111;
+display:none;
+}
+
+#letter{
+background:#000;
+display:none;
+}
+
+#final{
+background:#c33764;
+display:none;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:30px;
+font-size:18px;
+background:white;
+color:#c33764;
+cursor:pointer;
+margin-top:20px;
+}
+
+h1{
+font-size:40px;
+}
+
+#text{
+margin-top:20px;
+font-size:22px;
+min-height:40px;
+}
+
+.slideshow img{
+width:260px;
+height:260px;
+border-radius:20px;
+object-fit:cover;
+border:4px solid white;
+}
+
+.letterbox{
+max-width:500px;
+font-size:20px;
+line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="music.mp3"></audio>
+
+<section id="intro">
+
+<h1>Hey Hasi✨... I Made Something For You 🩵</h1>
+
+<button onclick="start()">Open</button>
+
+<p id="text"></p>
+
+</section>
+
+<section id="memory">
+
+<h1>Our Memories 📸</h1>
+
+<div class="slideshow">
+
+<img id="photo" src="photo1.jpeg">
+
+</div>
+
+<button onclick="nextLetter()">Next</button>
+
+</section>
+
+<section id="letter">
+
+<h1>A Message For You Hasiiiilllluuuuu✨🫂🫶🩵</h1>
+
+<div class="letterbox">
+
+You came into my life quietly…  
+but you became the most beautiful part of it.  
+
+Every moment with you feels special.  
+Your smile is something I never want to lose.  
+
+No matter where life goes…  
+I just want you beside me.
+
+</div>
+
+<button onclick="finalPage()">Continue</button>
+
+</section>
+
+<section id="final">
+
+<h1>You're Very Special To Me 🩵</h1>
+
+<h2>Always Remember That Hasiiiilllluuuuu✨</h2>
+
+</section>
+
+<script>
+
+let message="Sometimes words aren’t enough to explain what someone means to you Hasi✨..."
+
+let i=0
+
+function start(){
+
+document.getElementById("music").play()
+
+type()
+
+setTimeout(function(){
+
+document.getElementById("intro").style.display="none"
+
+document.getElementById("memory").style.display="flex"
+
+startSlide()
+
+},4000)
+
+}
+
+function type(){
+
+if(i<message.length){
+
+document.getElementById("text").innerHTML+=message.charAt(i)
+
+i++
+
+setTimeout(type,60)
+
+}
+
+}
+
+let photos=["photo1.jpeg","photo2.jpeg","photo3.jpeg","photo4.jpeg","photo5.jpeg","photo6.jpeg","photo7.jpeg","photo8.jpeg"]
+
+let p=0
+
+function startSlide(){
+
+setInterval(function(){
+
+p++
+
+if(p>=photos.length){p=0}
+
+document.getElementById("photo").src=photos[p]
+
+},2000)
+
+}
+
+function nextLetter(){
+
+document.getElementById("memory").style.display="none"
+
+document.getElementById("letter").style.display="flex"
+
+}
+
+function finalPage(){
+
+document.getElementById("letter").style.display="none"
+
+document.getElementById("final").style.display="flex"
+
+}
+
+</script>
+
+</body>
+</html>
